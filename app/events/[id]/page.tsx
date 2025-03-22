@@ -95,8 +95,8 @@ export default async function Home(props: {
               {eventDetails.details.organisation.name}
             </Text>
           </Group>
-          <Group>
-            <Text size="md" fw={600}>
+          <Stack justify="center" align="center" gap={"xs"}>
+            <Text size="md" fw={600} ta={"center"}>
               Interested in attending?
             </Text>
             {userInteractions?.has_rsvp ? (
@@ -108,7 +108,7 @@ export default async function Home(props: {
                 Login to RSVP
               </Button>
             )}
-          </Group>
+          </Stack>
         </Stack>
         {/* </Group> */}
       </Box>
