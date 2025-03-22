@@ -10,6 +10,17 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
+const imageUrls = [
+  "http://chaitanyak3672.pythonanywhere.com/static/2-1_92.jpg",
+  "http://chaitanyak3672.pythonanywhere.com/static/20240322_195156.jpg",
+  "http://chaitanyak3672.pythonanywhere.com/static/31_SM_MARATHON.jpg",
+  "http://chaitanyak3672.pythonanywhere.com/static/ANI-20240827115806.jpg",
+  "http://chaitanyak3672.pythonanywhere.com/static/IMG_8003.jpg",
+  "http://chaitanyak3672.pythonanywhere.com/static/IMG_9126.JPG",
+  "http://chaitanyak3672.pythonanywhere.com/static/Wedding-Stage-Decor-1.jpg",
+  "http://chaitanyak3672.pythonanywhere.com/static/istockphoto-517345964-612x612.jpg",
+];
+
 export default async function Home(props: {
   searchParams?: Promise<{
     query?: string;
@@ -60,6 +71,10 @@ export default async function Home(props: {
       </Group>
       <Box w={"100%"} className="scrolling-images" mt={"3em"}>
         <Group wrap={"nowrap"} gap={"3em"} className="scrolling-images-animation">
+          {imageUrls.map((url, i) => (
+            <Image key={i} className="scrolling-image" maw={"400px"} radius="md" src={url} alt={"event"} style={{ aspectRatio: 16 / 9 }} />
+          ))}
+          {/* <Image className="scrolling-image" maw={"400px"} radius="md" src="http://chaitanyak3672.pythonanywhere.com/static/2-1_92.jpg" alt="dsfds" />
           <Image className="scrolling-image" maw={"400px"} radius="md" src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png" alt="dsfds" />
           <Image className="scrolling-image" maw={"400px"} radius="md" src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png" alt="dsfds" />
           <Image className="scrolling-image" maw={"400px"} radius="md" src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png" alt="dsfds" />
@@ -70,8 +85,7 @@ export default async function Home(props: {
           <Image className="scrolling-image" maw={"400px"} radius="md" src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png" alt="dsfds" />
           <Image className="scrolling-image" maw={"400px"} radius="md" src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png" alt="dsfds" />
           <Image className="scrolling-image" maw={"400px"} radius="md" src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png" alt="dsfds" />
-          <Image className="scrolling-image" maw={"400px"} radius="md" src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png" alt="dsfds" />
-          <Image className="scrolling-image" maw={"400px"} radius="md" src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png" alt="dsfds" />
+          <Image className="scrolling-image" maw={"400px"} radius="md" src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png" alt="dsfds" /> */}
         </Group>
       </Box>
       <Flex align="center" justify="space-evenly" my={"3em"} wrap={"wrap"} gap={"lg"}>
