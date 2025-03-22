@@ -5,7 +5,6 @@ import { getEventsPersonalisedFeed, getEventsPublicFeed } from "@/lib/data/event
 import { EventDetails } from "@/lib/types/events";
 
 import { Avatar, Box, Flex, Group, Image, Menu, MenuDropdown, MenuTarget, SimpleGrid, Skeleton, Stack, Text } from "@mantine/core";
-import { IconCalendar, IconDeviceGamepad, IconDeviceLaptop, IconGlassFullFilled, IconMusic, IconPizza } from "@tabler/icons-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";

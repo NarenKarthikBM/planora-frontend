@@ -1,15 +1,9 @@
-import EventCard from "@/components/events/EventCard";
-import Search from "@/components/SearchInput";
 import { GetAuthUserDetails } from "@/lib/auth/auth-handlers";
 import { getEventDetails } from "@/lib/data/events/event-details";
-import { getEventsPersonalisedFeed, getEventsPublicFeed } from "@/lib/data/events/events-feed";
 import { EventDetails } from "@/lib/types/events";
 
-import { Avatar, Box, Flex, Group, Image, SimpleGrid, Skeleton, Stack, Text, Title } from "@mantine/core";
-import { IconCalendar, IconDeviceGamepad, IconDeviceLaptop, IconGlassFullFilled, IconMusic, IconPizza } from "@tabler/icons-react";
+import { Avatar, Box, Flex, Group, Image, Stack, Text, Title } from "@mantine/core";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { Suspense } from "react";
 
 export default async function Home(props: {
   params?: Promise<{

@@ -1,15 +1,12 @@
-import EventCard from "@/components/events/EventCard";
 import RSVPEventForm from "@/components/forms/RSVPEventForm";
-import Search from "@/components/SearchInput";
 import { GetAuthUserDetails } from "@/lib/auth/auth-handlers";
 import { getEventUserInteractions } from "@/lib/data/events/check-user-interactions";
 import { getEventDetails } from "@/lib/data/events/event-details";
-import { getEventsPersonalisedFeed, getEventsPublicFeed } from "@/lib/data/events/events-feed";
 import { EventDetails } from "@/lib/types/events";
 import { formatToDateString } from "@/lib/utils/conversions";
 
-import { Avatar, Box, Button, Flex, Group, Image, SimpleGrid, Skeleton, Stack, Text, Title } from "@mantine/core";
-import { IconCalendar, IconDeviceGamepad, IconDeviceLaptop, IconGlassFullFilled, IconLocation, IconMusic, IconPizza } from "@tabler/icons-react";
+import { Avatar, Box, Button, Flex, Group, Image, Stack, Text, Title } from "@mantine/core";
+import { IconCalendar, IconLocation } from "@tabler/icons-react";
 import Link from "next/link";
 
 const imageUrls = [

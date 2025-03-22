@@ -21,6 +21,7 @@ const RSVPEventForm = (props: { eventID: number }) => {
     eventID: props.eventID,
   };
   const [status, formAction] = useActionState(rsvpEvent, initialState);
+  console.log(status);
 
   return (
     <form action={formAction}>

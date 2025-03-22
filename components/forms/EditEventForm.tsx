@@ -1,11 +1,10 @@
 "use client";
 import { useFormStatus } from "react-dom";
-import { Alert, Button, ComboboxItem, Modal, Select, Stack, Text, Textarea, TextInput } from "@mantine/core";
+import { Alert, Button, ComboboxItem, Select, Stack, Text, Textarea, TextInput } from "@mantine/core";
 // @ts-expect-error: No types available for 'indian-states-cities-list'
 import Indian_states_cities_list from "indian-states-cities-list";
 import { useState, useActionState, useEffect } from "react";
 import { DateTimePicker } from "@mantine/dates";
-import { createEvent } from "@/lib/actions/events/create-event";
 import dayjs from "dayjs";
 import { EventDetails } from "@/lib/types/events";
 import { convertNormalToPascal } from "@/lib/utils/conversions";

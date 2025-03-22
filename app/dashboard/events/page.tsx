@@ -1,9 +1,6 @@
-import { Table, TableTd, TableTh, TableThead, TableTr, TableTbody, Text, Title, Button, Group, Accordion, AccordionItem, AccordionControl, AccordionPanel, Stack, Badge, Center } from "@mantine/core";
-import { getUserOrganisations } from "@/lib/data/users/user-organisations";
+import { Table, TableTd, TableTh, TableThead, TableTr, TableTbody, Text, Title, Group, Accordion, AccordionItem, AccordionControl, AccordionPanel, Stack, Badge } from "@mantine/core";
 import { EventDetails } from "@/lib/types/events";
-import Link from "next/link";
 import { getUserEvents } from "@/lib/data/events/events-list-by-user";
-import { DonutChart } from "@mantine/charts";
 
 export default async function MyEventsPage() {
   const eventsList: { events: Array<{ details: EventDetails; attended: number; rsvped: number }> } = await getUserEvents();

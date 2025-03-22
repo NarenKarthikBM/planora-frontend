@@ -1,6 +1,5 @@
 "use server";
 import { SetAuthUserDetails, SetAuthUserTokens } from "@/lib/auth/auth-handlers";
-import next from "next";
 import { redirect } from "next/navigation";
 
 export async function login(prevState: { message: string; next: string | null }, formData: FormData) {

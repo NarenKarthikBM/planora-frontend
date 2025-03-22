@@ -2,23 +2,19 @@
 import { GetAuthUserTokens } from "@/lib/auth/auth-handlers";
 import { redirect } from "next/navigation";
 
-export async function publishEvent(
-  prevState: {
-    message: string | null;
-    eventID: number;
-  },
-  formData: FormData
-) {
+export async function publishEvent(prevState: { message: string | null; eventID: number }, formData: FormData) {
+  console.log(formData);
   const userAuthTokens = await GetAuthUserTokens();
   if (userAuthTokens == null) {
     redirect("/login");
-    return { status: 403 };
+    return { message: "Auth Failed", eventID: prevState.eventID };
   }
   const response = await fetch(`${process.env.API_URL}/v1/events/publish/${prevState.eventID}/`, {
     cache: "no-store",
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: userAuthTokens.authToken != undefined ? userAuthTokens.authToken : "" },
   });
+
   if (response.ok) {
     redirect(`/events/${prevState.eventID}`);
     return {
