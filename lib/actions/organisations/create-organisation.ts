@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 export async function createOrganisation(prevState: { message: string }, formData: FormData) {
   const userAuthTokens = await GetAuthUserTokens();
-  if (userAuthTokens == null) {
+  if (userAuthTokens == null || userAuthTokens.authToken == undefined) {
     redirect("/login");
     return { message: "unauthorized" };
   }
