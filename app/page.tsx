@@ -7,6 +7,7 @@ import { EventDetails } from "@/lib/types/events";
 import { Avatar, Box, Flex, Group, Image, SimpleGrid, Skeleton, Stack, Text } from "@mantine/core";
 import { IconCalendar, IconDeviceGamepad, IconDeviceLaptop, IconGlassFullFilled, IconMusic, IconPizza } from "@tabler/icons-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 export default async function Home(props: {
@@ -18,6 +19,10 @@ export default async function Home(props: {
 }) {
   const authUser = await GetAuthUserDetails();
   const authUserDetails = authUser ? authUser.details : null;
+
+  if (authUserDetails?.email_verified == false) {
+    redirect("/verify_email");
+  }
 
   const searchParams = await props.searchParams;
   const query = searchParams?.query || "";

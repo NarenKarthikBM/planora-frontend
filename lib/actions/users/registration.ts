@@ -1,6 +1,7 @@
 "use server";
 import { SetAuthUserDetails, SetAuthUserTokens } from "@/lib/auth/auth-handlers";
 import { convertPascalToNormal } from "@/lib/utils/conversions";
+import { redirect } from "next/navigation";
 
 export async function registration(prevState: { message: string }, formData: FormData) {
   const location = formData.get("city")
@@ -28,7 +29,7 @@ export async function registration(prevState: { message: string }, formData: For
   if (response.status == 201) {
     await SetAuthUserDetails(resData["user_details"]);
     await SetAuthUserTokens(resData["tokens"]["auth_token"]);
-    // redirect("/verify_email");
+    redirect("/verify_email");
     return {
       message: "Successfully registered",
     };
