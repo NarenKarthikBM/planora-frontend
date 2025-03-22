@@ -20,10 +20,9 @@ const PublishEvent = (props: { eventID: number }) => {
     eventID: props.eventID,
   };
 
-  // @ts-expect-error: No types available for 'indian-states-cities-list'
-  const [formAction] = useActionState(publishEvent, initialState);
+  const [status, formAction] = useActionState(publishEvent, initialState);
 
-  console.log(props.eventID);
+  console.log(status);
   return (
     <form action={formAction}>
       <SubmitButton />
