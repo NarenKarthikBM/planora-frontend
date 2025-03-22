@@ -18,18 +18,18 @@ export default async function MyEventsPage() {
       </AccordionControl>
       <AccordionPanel>
         <Stack>
-          <Text>{item.details.description}</Text>
+          {/* <Text>{item.details.description}</Text> */}
           <Table>
             <TableThead>
               <TableTr>
                 <TableTh>Attended</TableTh>
-                <TableTh>RSVPed</TableTh>
+                <TableTh>Interested</TableTh>
               </TableTr>
             </TableThead>
             <TableTbody>
               <TableTr>
-                <TableTd>{item.attended}</TableTd>
-                <TableTd>{item.rsvped}</TableTd>
+                <TableTd>{String(item.attended)}</TableTd>
+                <TableTd>{String(item.rsvped)}</TableTd>
               </TableTr>
             </TableTbody>
           </Table>

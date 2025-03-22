@@ -1,3 +1,4 @@
+import CopyURL from "@/components/copyURL";
 import RSVPEventForm from "@/components/forms/RSVPEventForm";
 import { GetAuthUserDetails } from "@/lib/auth/auth-handlers";
 import { getEventUserInteractions } from "@/lib/data/events/check-user-interactions";
@@ -108,6 +109,7 @@ export default async function Home(props: {
                 Login to RSVP
               </Button>
             )}
+            <CopyURL />
           </Stack>
         </Stack>
         {/* </Group> */}
