@@ -1,6 +1,7 @@
-import { Table, TableTd, TableTh, TableThead, TableTr, TableTbody, Text, Title, Group, Accordion, AccordionItem, AccordionControl, AccordionPanel, Stack, Badge } from "@mantine/core";
+import { Table, TableTd, TableTh, TableThead, TableTr, TableTbody, Text, Title, Group, Accordion, AccordionItem, AccordionControl, AccordionPanel, Stack, Badge, Button } from "@mantine/core";
 import { EventDetails } from "@/lib/types/events";
 import { getUserEvents } from "@/lib/data/events/events-list-by-user";
+import Link from "next/link";
 
 export default async function MyEventsPage() {
   const eventsList: { events: Array<{ details: EventDetails; attended: number; rsvped: number }> } = await getUserEvents();
@@ -28,11 +29,14 @@ export default async function MyEventsPage() {
             </TableThead>
             <TableTbody>
               <TableTr>
-                <TableTd>{String(item.attended)}</TableTd>
-                <TableTd>{String(item.rsvped)}</TableTd>
+                <TableTd>{item.attended != undefined ? item.attended : "0"}</TableTd>
+                <TableTd>{item.rsvped != undefined ? item.rsvped : "0"}</TableTd>
               </TableTr>
             </TableTbody>
           </Table>
+          <Button component={Link} href={`/dashboard/events/${item.details.id}/edit`} fullWidth color="rgba(91, 110, 253, 0.85)" variant="outline">
+            Edit
+          </Button>
         </Stack>
       </AccordionPanel>
     </AccordionItem>
