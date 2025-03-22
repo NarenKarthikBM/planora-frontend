@@ -2,7 +2,7 @@
 
 import { NAVBAR_LINKS } from "@/lib/constants";
 import { UserDetails } from "@/lib/types/users";
-import { AppShell, Avatar, Flex, Group, NavLink, Text } from "@mantine/core";
+import { AppShell, Avatar, Flex, Group, Image, NavLink, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,6 +18,7 @@ export default function AppShellContainer({ children, authUserDetails }: { child
     <AppShell header={{ height: 60 }} navbar={{ width: 300, breakpoint: "sm", collapsed: { mobile: !opened } }} padding="md">
       <AppShell.Header bg={"rgb(220, 225, 255)"} px="md" withBorder={false}>
         <Flex top={0} left={0} w={"100%"} h={"4em"} align={"center"} px={"1em"}>
+          <Image src="/logo.png" alt="Planora Logo" width={50} height={50} />
           <Text component={Link} href={"/"} size="xl">
             planora.
           </Text>
