@@ -6,6 +6,7 @@ import "@mantine/core/styles.css";
 import MantineLayout from "@/components/MantineLayout";
 import "@mantine/dropzone/styles.css";
 import "@mantine/dates/styles.css";
+import "@mantine/charts/styles.css";
 
 const interFont = Inter({
   variable: "--font-inter",
