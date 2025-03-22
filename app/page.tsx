@@ -20,6 +20,7 @@ export default async function Home(props: {
   const authUser = await GetAuthUserDetails();
   const authUserDetails = authUser ? authUser.details : null;
 
+  console.log(authUserDetails);
   if (authUserDetails?.email_verified == false) {
     redirect("/verify_email");
   }

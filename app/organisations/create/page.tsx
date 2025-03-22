@@ -1,7 +1,14 @@
 import CreateOrganisationForm from "@/components/forms/CreateOrganisationForm";
+import { GetAuthUserDetails } from "@/lib/auth/auth-handlers";
 import { Box, Card, Flex, Image, Stack, Text } from "@mantine/core";
+import { redirect } from "next/navigation";
 
-export default function CreateOrganisation() {
+export default async function CreateOrganisation() {
+  const authUser = await GetAuthUserDetails();
+
+  if (!authUser) {
+    redirect("/login");
+  }
   return (
     <>
       <Box pos={"absolute"} top={"2vh"} left={"10vw"} w={{ base: "100px", md: "400px" }} h={{ base: "100px", md: "400px" }}>

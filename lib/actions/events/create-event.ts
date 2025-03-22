@@ -49,7 +49,7 @@ export async function createEvent(
   console.log(resData);
 
   if (response.status == 201) {
-    redirect(`/events/${resData.id}/edit`);
+    redirect(`/dashboard/events/${resData.details.id}/edit`);
     return {
       message: "Successfully created",
       organisationID: prevState.organisationID,
