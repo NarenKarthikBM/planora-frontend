@@ -5,11 +5,12 @@ import { getEventsPersonalisedFeed, getEventsPublicFeed } from "@/lib/data/event
 import { EventDetails } from "@/lib/types/events";
 
 import { Avatar, Box, Flex, Group, Image, Menu, MenuDropdown, MenuTarget, SimpleGrid, Skeleton, Stack, Text } from "@mantine/core";
+import { IconCalendar, IconDeviceGamepad, IconDeviceLaptop, IconGlassFullFilled, IconMusic, IconPizza } from "@tabler/icons-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
-const imageUrls = [
+export const imageUrls = [
   "http://chaitanyak3672.pythonanywhere.com/static/2-1_92.jpg",
   "http://chaitanyak3672.pythonanywhere.com/static/20240322_195156.jpg",
   "http://chaitanyak3672.pythonanywhere.com/static/31_SM_MARATHON.jpg",
@@ -140,7 +141,7 @@ export default async function Home(props: {
         </Group>
       </Box>
       {/* <Flex align="center" justify="space-evenly" my={"3em"} wrap={"wrap"} gap={"lg"}>
-        <Stack w={{ base: "100px", md: "120px" }} align="center" p={"md"} className="glassmorphic-card">
+        <Stack component={Link} hre w={{ base: "100px", md: "120px" }} align="center" p={"md"} className="glassmorphic-card">
           <IconMusic size={"32px"} />
           <Text size="xs">Music</Text>
         </Stack>
@@ -151,10 +152,6 @@ export default async function Home(props: {
         <Stack w={{ base: "100px", md: "120px" }} align="center" p={"md"} className="glassmorphic-card">
           <IconCalendar size={"32px"} />
           <Text size="xs">Holidays</Text>
-        </Stack>
-        <Stack w={{ base: "100px", md: "120px" }} align="center" p={"md"} className="glassmorphic-card">
-          <IconMusic size={"32px"} />
-          <Text size="xs">Dating</Text>
         </Stack>
         <Stack w={{ base: "100px", md: "120px" }} align="center" p={"md"} className="glassmorphic-card">
           <IconDeviceGamepad size={"32px"} />
