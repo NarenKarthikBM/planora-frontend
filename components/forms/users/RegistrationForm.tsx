@@ -54,7 +54,7 @@ const RegistrationForm = () => {
           data={Indian_states_cities_list.STATES_OBJECT.map((state: { name: string; label: string }) => ({ value: state.name, label: state.label }))}
         />
         <Select searchable name="city" label="City" placeholder="Select City" disabled={!stateLocation} data={stateCities} />
-        <PasswordInput name="password" label="Password" placeholder="Password" required />
+        <PasswordInput minLength={6} name="password" label="Password" placeholder="Password" required />
         <SubmitButton />
       </Stack>
     </form>
