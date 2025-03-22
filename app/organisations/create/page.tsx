@@ -60,7 +60,7 @@ export default async function CreateOrganisation() {
         <Card shadow="lg" padding="lg" radius="md" w={{ base: "100%", md: "400px" }} mt={"3em"} style={{ backdropFilter: "blur(10px)" }}>
           <Stack>
             <Text size="sm" ta={"left"} mb={"0.5em"}>
-              Register your Organisation
+              Register your Organisation to host events
             </Text>
             <CreateOrganisationForm />
           </Stack>

@@ -5,7 +5,13 @@ import { Box, Button, Card, Divider, Flex, Image, Stack, Text } from "@mantine/c
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-export default async function Login() {
+export default async function Login(props: {
+  searchParams?: Promise<{
+    next?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  const next = searchParams?.next;
   const authUser: { details: UserDetails } | null = await GetAuthUserDetails();
   const authUserDetails = authUser ? authUser.details : null;
 
@@ -52,7 +58,7 @@ export default async function Login() {
             <Text size="md" ta={"center"}>
               Login
             </Text>
-            <LoginForm />
+            <LoginForm next={next != undefined ? next : null} />
             <Divider />
             <Button component={Link} href={"/register"} type="submit" color="gray.7" radius={"md"}>
               Sign Up

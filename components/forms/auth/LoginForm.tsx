@@ -6,10 +6,6 @@ import { Alert, Button, PasswordInput, Stack, TextInput } from "@mantine/core";
 import { useActionState } from "react";
 import RedirectClient from "@/components/RedirectClient";
 
-const initialState = {
-  message: "",
-};
-
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
@@ -19,7 +15,11 @@ function SubmitButton() {
   );
 }
 
-const LoginForm = () => {
+const LoginForm = (props: { next: string | null }) => {
+  const initialState = {
+    message: "",
+    next: props.next,
+  };
   const [state, formAction] = useActionState(login, initialState);
 
   if (state.message === "Logged In") {
@@ -30,7 +30,7 @@ const LoginForm = () => {
     <form action={formAction}>
       <Stack>
         {state.message.length > 0 ? <Alert color="red" title={state.message}></Alert> : null}
-        <TextInput name="email" label="Email" placeholder="Email ID" required />
+        <TextInput name="email" label="Email" placeholder="Email ID" required type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
         <PasswordInput name="password" label="Password" placeholder="Password" required />
         <SubmitButton />
       </Stack>

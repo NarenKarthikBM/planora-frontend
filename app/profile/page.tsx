@@ -17,11 +17,14 @@ export default async function Profile() {
   return (
     <>
       <Flex top={0} left={0} w={"100%"} h={"4em"} align={"center"} px={"1em"}>
+        <Image src="/logo.png" alt="Planora Logo" width={50} height={50} />
         <Text component={Link} href={"/"} size="xl">
           planora.
         </Text>
         <Group ml={"auto"} gap={"1em"}>
-          <Text size="md">Host an event</Text>
+          <Text component={Link} size="md" href={"/organisations/create"}>
+            Host an event
+          </Text>
           <Text component={Link} href={authUserDetails ? "/profile" : "/login"} size="md" style={{ cursor: "pointer" }}>
             {authUserDetails ? <Avatar src={`https://ui-avatars.com/api/?name=${authUserDetails.name}&background=DDE0F2`} /> : "Login"}
           </Text>

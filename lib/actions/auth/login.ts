@@ -1,7 +1,9 @@
 "use server";
 import { SetAuthUserDetails, SetAuthUserTokens } from "@/lib/auth/auth-handlers";
+import next from "next";
+import { redirect } from "next/navigation";
 
-export async function login(prevState: { message: string }, formData: FormData) {
+export async function login(prevState: { message: string; next: string | null }, formData: FormData) {
   const data = {
     email: formData.get("email"),
     password: formData.get("password"),
@@ -21,24 +23,30 @@ export async function login(prevState: { message: string }, formData: FormData) 
       console.log(resData);
       await SetAuthUserDetails(resData["user_details"]);
       await SetAuthUserTokens(resData["tokens"]["auth_token"]);
-      //   redirect("/");
+      if (prevState.next) {
+        redirect(prevState.next);
+      }
       return {
         message: "Logged In",
+        next: prevState.next,
       };
     } else {
       if (resData.field == "email") {
         return {
           message: "User Not Found",
+          next: prevState.next,
         };
       }
       return {
         message: "Invalid Credentials!!",
+        next: prevState.next,
       };
     }
   } else {
     console.error("HTTP-Error: " + (await response.text()));
     return {
       message: "Invalid Credentials!!",
+      next: prevState.next,
     };
   }
 }

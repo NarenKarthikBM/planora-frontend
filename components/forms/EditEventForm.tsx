@@ -1,6 +1,6 @@
 "use client";
 import { useFormStatus } from "react-dom";
-import { Alert, Button, ComboboxItem, Select, Stack, Text, Textarea, TextInput } from "@mantine/core";
+import { Alert, Button, ComboboxItem, Modal, Select, Stack, Text, Textarea, TextInput } from "@mantine/core";
 // @ts-expect-error: No types available for 'indian-states-cities-list'
 import Indian_states_cities_list from "indian-states-cities-list";
 import { useState, useActionState, useEffect } from "react";
@@ -9,6 +9,7 @@ import { createEvent } from "@/lib/actions/events/create-event";
 import dayjs from "dayjs";
 import { EventDetails } from "@/lib/types/events";
 import { convertNormalToPascal } from "@/lib/utils/conversions";
+import { editEvent } from "@/lib/actions/events/edit-event";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -20,12 +21,13 @@ function SubmitButton() {
 }
 
 const EditEventForm = (props: { eventDetails: EventDetails }) => {
+  console.log(props.eventDetails.id);
   const initialState = {
     message: "",
-    organisationID: props.eventDetails.organisation.id,
+    eventID: props.eventDetails.id,
   };
   const statePascal = props.eventDetails.location.split(",").length > 1 ? convertNormalToPascal(props.eventDetails.location.split(",")[1]) : null;
-  const [state, formAction] = useActionState(createEvent, initialState);
+  const [state, formAction] = useActionState(editEvent, initialState);
   const [stateLocation, setStateLocation] = useState<ComboboxItem | null>(statePascal ? { value: statePascal, label: statePascal } : null);
   const [startValue, setStartValue] = useState<Date | null>(new Date());
   const [endValue, setEndValue] = useState<Date | null>(new Date());
@@ -46,17 +48,19 @@ const EditEventForm = (props: { eventDetails: EventDetails }) => {
   //   return <Image key={index} src={imageUrl} onLoad={() => URL.revokeObjectURL(imageUrl)} />;
   // });
 
-  // if (state.message == "Successfully edited") {
-  //   return <RedirectClient redirect_to="/dashboard/organisations" />;
-  // }
-
   return (
     <form action={formAction}>
       <Stack>
         {state.message.length > 0 ? (
-          <Alert color="red" title="Error">
-            <Text>{state.message}</Text>
-          </Alert>
+          state.message != "Successfully edited" ? (
+            <Alert color="red" title="Error">
+              <Text>{state.message}</Text>
+            </Alert>
+          ) : (
+            <Alert color="green" title="Saved">
+              <Text>Successfully saved edits!!</Text>
+            </Alert>
+          )
         ) : null}
         <TextInput name="name" label="Name" placeholder="Event Name" required defaultValue={props.eventDetails.name} />
 

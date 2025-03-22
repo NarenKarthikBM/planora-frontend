@@ -57,9 +57,10 @@ export default async function OrganisationDetailPage({ params }: { params: Promi
             </Title>
             <Menu shadow="md" width={200}>
               <MenuTarget>
-                <ActionIcon size="xl" color="rgba(155, 166, 255, 0.85)" style={{ cursor: "pointer" }}>
+                <Button size="md" color="rgba(155, 166, 255, 0.85)" style={{ cursor: "pointer" }}>
                   <IconPlus />
-                </ActionIcon>
+                  Add Event
+                </Button>
               </MenuTarget>
               <MenuDropdown>
                 <Button mb={"4px"} component={Link} href={`/dashboard/organisations/${id}/create_event/`} color="rgba(155, 166, 255, 0.85)" w={"100%"}>

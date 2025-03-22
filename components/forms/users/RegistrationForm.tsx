@@ -41,8 +41,8 @@ const RegistrationForm = () => {
     <form action={formAction}>
       <Stack>
         {state.message.length > 0 ? <Alert color="red" title={state.message}></Alert> : null}
-        <TextInput name="email" label="Email" placeholder="Email ID" required />
-        <TextInput name="mobile_no" label="Mobile No" placeholder="Mobile No." required />
+        <TextInput name="email" label="Email" placeholder="Email ID" required type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+        <TextInput name="mobile_no" label="Mobile No" placeholder="Mobile No." required pattern="^\d{10}$" />
         <TextInput name="name" label="Name" placeholder="Name" required />
         <Select
           value={stateLocation ? stateLocation.value : null}

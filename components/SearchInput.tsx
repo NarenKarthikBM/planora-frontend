@@ -55,13 +55,13 @@ export default function Search() {
           size="lg"
           w={"100%"}
           maw={"200px"}
-          placeholder="Filter by category"
+          placeholder="Filter "
           data={EVENT_CATEGORIES}
-          radius={"md"}
           style={{ backdropFilter: "blur(5px)" }}
           onChange={(val) => {
             handleFilter(val);
           }}
+          radius={"xl"}
           defaultValue={searchParams.get("category")?.toString()}
         />
       </Flex>

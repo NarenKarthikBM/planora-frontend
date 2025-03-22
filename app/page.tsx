@@ -4,7 +4,7 @@ import { GetAuthUserDetails } from "@/lib/auth/auth-handlers";
 import { getEventsPersonalisedFeed, getEventsPublicFeed } from "@/lib/data/events/events-feed";
 import { EventDetails } from "@/lib/types/events";
 
-import { Avatar, Box, Flex, Group, Image, SimpleGrid, Skeleton, Stack, Text } from "@mantine/core";
+import { Avatar, Box, Flex, Group, Image, Menu, MenuDropdown, MenuTarget, SimpleGrid, Skeleton, Stack, Text } from "@mantine/core";
 import { IconCalendar, IconDeviceGamepad, IconDeviceLaptop, IconGlassFullFilled, IconMusic, IconPizza } from "@tabler/icons-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -71,6 +71,7 @@ export default async function Home(props: {
   return (
     <>
       <Flex top={0} left={0} w={"100%"} h={"4em"} align={"center"} px={"1em"}>
+        <Image src="/logo.png" alt="Planora Logo" width={50} height={50} />
         <Text component={Link} href={"/"} size="xl">
           planora.
         </Text>
@@ -78,9 +79,31 @@ export default async function Home(props: {
           <Text component={Link} size="md" href={"/organisations/create"}>
             Host an event
           </Text>
-          <Text component={Link} href={authUserDetails ? "/profile" : "/login"} size="md" style={{ cursor: "pointer" }}>
-            {authUserDetails ? <Avatar src={`https://ui-avatars.com/api/?name=${authUserDetails.name}&background=DDE0F2`} /> : "Login"}
-          </Text>
+
+          {authUserDetails ? (
+            <Menu trigger="click-hover" loop={false} withinPortal={false} trapFocus={false} menuItemTabIndex={0}>
+              <MenuTarget>
+                <Avatar src={`https://ui-avatars.com/api/?name=${authUserDetails.name}&background=DDE0F2`} />
+              </MenuTarget>
+              <MenuDropdown>
+                <Stack gap={"xs"} p={"md"}>
+                  <Text style={{ textDecoration: "underline" }} component={Link} href={"/profile"} size="md">
+                    Profile
+                  </Text>
+                  <Text style={{ textDecoration: "underline" }} component={Link} href={"/dashboard/organisations"} size="md">
+                    Dashboard
+                  </Text>
+                  <Text style={{ textDecoration: "underline" }} component={Link} href={"/logout"} size="md">
+                    Logout
+                  </Text>
+                </Stack>
+              </MenuDropdown>
+            </Menu>
+          ) : (
+            <Text component={Link} href={authUserDetails ? "/profile" : "/login"} size="md" style={{ cursor: "pointer" }}>
+              Login
+            </Text>
+          )}
         </Group>
       </Flex>
       <Group visibleFrom="md" w={"100%"} h={"80px"} justify="center" align="center" mt={"3em"}>
@@ -93,7 +116,12 @@ export default async function Home(props: {
         <Text size="24px">organise.</Text>
         <Text size="24px">radiate.</Text>
       </Group>
-      <Box w={"100%"} className="scrolling-images" mt={"3em"}>
+
+      <Box mt={"2em"}>
+        <Search />
+      </Box>
+
+      <Box w={"100%"} className="scrolling-images" mb={"3em"}>
         <Group wrap={"nowrap"} gap={"3em"} className="scrolling-images-animation">
           {imageUrls.map((url, i) => (
             <Image key={i} className="scrolling-image" maw={"400px"} radius="md" src={url} alt={"event"} style={{ aspectRatio: 16 / 9 }} />
@@ -112,7 +140,7 @@ export default async function Home(props: {
           <Image className="scrolling-image" maw={"400px"} radius="md" src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png" alt="dsfds" /> */}
         </Group>
       </Box>
-      <Flex align="center" justify="space-evenly" my={"3em"} wrap={"wrap"} gap={"lg"}>
+      {/* <Flex align="center" justify="space-evenly" my={"3em"} wrap={"wrap"} gap={"lg"}>
         <Stack w={{ base: "100px", md: "120px" }} align="center" p={"md"} className="glassmorphic-card">
           <IconMusic size={"32px"} />
           <Text size="xs">Music</Text>
@@ -141,9 +169,8 @@ export default async function Home(props: {
           <IconPizza size={"32px"} />
           <Text size="xs">Food</Text>
         </Stack>
-      </Flex>
+      </Flex> */}
 
-      <Search />
       {/* <Flex w={"100%"} p={"2em"} style={{ backdropFilter: "blur(10px)" }} justify={"center"} align={"center"}>
         <TextInput size="lg" w={"100%"} maw={"600px"} placeholder="Search events..." radius={"xl"} style={{ backdropFilter: "blur(5px)" }} />
       </Flex> */}
