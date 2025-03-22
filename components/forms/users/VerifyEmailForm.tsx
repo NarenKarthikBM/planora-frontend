@@ -1,6 +1,6 @@
 "use client";
 import { useFormStatus } from "react-dom";
-import { Alert, Button, Stack, TextInput } from "@mantine/core";
+import { Alert, Button, Center, Loader, Stack, TextInput } from "@mantine/core";
 import { useActionState } from "react";
 import { verifyOTP } from "@/lib/actions/users/verify-otp";
 import RedirectClient from "@/components/RedirectClient";
@@ -22,7 +22,14 @@ const VerifyEmailForm = () => {
   const [state, formAction] = useActionState(verifyOTP, initialState);
 
   if (state.message == "Successfully verified") {
-    return <RedirectClient redirect_to="/" />;
+    return (
+      <>
+        <Center>
+          <Loader />
+        </Center>
+        <RedirectClient redirect_to="/" />
+      </>
+    );
   }
 
   return (

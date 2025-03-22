@@ -59,9 +59,9 @@ export default async function VerifyEmail() {
               Verify Email
             </Text>
             <VerifyEmailForm />
-            <Button type="submit" color="gray.7" radius={"md"}>
+            {/* <Button type="submit" color="gray.7" radius={"md"}>
               Verify
-            </Button>
+            </Button> */}
           </Stack>
         </Card>
       </Flex>
