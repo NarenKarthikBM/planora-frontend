@@ -2,7 +2,7 @@ import VerifyEmailForm from "@/components/forms/users/VerifyEmailForm";
 import { sendVerificationOTP } from "@/lib/actions/users/send-verification-otp";
 import { GetAuthUserDetails } from "@/lib/auth/auth-handlers";
 import { UserDetails } from "@/lib/types/users";
-import { Box, Button, Card, Flex, Image, Stack, Text } from "@mantine/core";
+import { Box, Card, Flex, Image, Stack, Text } from "@mantine/core";
 import { redirect } from "next/navigation";
 
 export default async function VerifyEmail() {
