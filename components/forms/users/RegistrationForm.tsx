@@ -1,7 +1,7 @@
 "use client";
 
 import { useFormStatus } from "react-dom";
-import { Alert, Button, ComboboxItem, PasswordInput, Select, Stack, TextInput } from "@mantine/core";
+import { Alert, Button, Center, ComboboxItem, Loader, PasswordInput, Select, Stack, TextInput } from "@mantine/core";
 import { useState, useEffect, useActionState } from "react";
 // @ts-expect-error: No types available for 'indian-states-cities-list'
 import Indian_states_cities_list from "indian-states-cities-list";
@@ -34,7 +34,14 @@ const RegistrationForm = () => {
   }, [stateLocation]);
 
   if (state.message == "Successfully registered") {
-    return <RedirectClient redirect_to="/verify_email" />;
+    return (
+      <>
+        <Center>
+          <Loader />
+        </Center>
+        <RedirectClient redirect_to="/verify_email" />
+      </>
+    );
   }
 
   return (
