@@ -6,7 +6,7 @@ import { getEventDetails } from "@/lib/data/events/event-details";
 import { EventDetails } from "@/lib/types/events";
 import { formatToDateString } from "@/lib/utils/conversions";
 
-import { Avatar, Box, Button, Flex, Group, Image, Stack, Text, Title } from "@mantine/core";
+import { Avatar, Box, Button, Flex, Group, Image, Menu, MenuDropdown, MenuTarget, Stack, Text, Title } from "@mantine/core";
 import { IconCalendar, IconLocation } from "@tabler/icons-react";
 import Link from "next/link";
 
@@ -79,9 +79,27 @@ export default async function Home(props: {
           <Text component={Link} size="md" href={"/organisations/create"}>
             Host an event
           </Text>
-          <Text component={Link} href={authUserDetails ? "/profile" : "/login"} size="md" style={{ cursor: "pointer" }}>
-            {authUserDetails ? <Avatar src={`https://ui-avatars.com/api/?name=${authUserDetails.name}&background=DDE0F2`} /> : "Login"}
-          </Text>
+          {authUserDetails ? (
+            <Menu trigger="click-hover" loop={false} withinPortal={false} trapFocus={false} menuItemTabIndex={0}>
+              <MenuTarget>
+                <Avatar src={`https://ui-avatars.com/api/?name=${authUserDetails.name}&background=DDE0F2`} />
+              </MenuTarget>
+              <MenuDropdown>
+                <Stack gap={"xs"} p={"md"}>
+                  <Text style={{ textDecoration: "underline" }} component={Link} href={"/profile"} size="md">
+                    Profile
+                  </Text>
+                  <Text style={{ textDecoration: "underline" }} component={Link} href={"/dashboard/organisations"} size="md">
+                    Dashboard
+                  </Text>
+                </Stack>
+              </MenuDropdown>
+            </Menu>
+          ) : (
+            <Text component={Link} href={authUserDetails ? "/profile" : "/login"} size="md" style={{ cursor: "pointer" }}>
+              Login
+            </Text>
+          )}
         </Group>
       </Flex>
       <Box w={"100%"} p={"xl"} mb={"xl"} bg={"rgb(209, 215, 252)"} style={{ borderRadius: "10px" }}>

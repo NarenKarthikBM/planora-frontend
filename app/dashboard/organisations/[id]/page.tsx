@@ -66,9 +66,6 @@ export default async function OrganisationDetailPage({ params }: { params: Promi
                 <Button mb={"4px"} component={Link} href={`/dashboard/organisations/${id}/create_event/`} color="rgba(155, 166, 255, 0.85)" w={"100%"}>
                   Form
                 </Button>
-                <Button color="rgba(155, 166, 255, 0.85)" w={"100%"}>
-                  CSV
-                </Button>
               </MenuDropdown>
             </Menu>
           </Group>

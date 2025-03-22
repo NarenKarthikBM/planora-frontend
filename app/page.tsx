@@ -92,9 +92,6 @@ export default async function Home(props: {
                   <Text style={{ textDecoration: "underline" }} component={Link} href={"/dashboard/organisations"} size="md">
                     Dashboard
                   </Text>
-                  <Text style={{ textDecoration: "underline" }} component={Link} href={"/logout"} size="md">
-                    Logout
-                  </Text>
                 </Stack>
               </MenuDropdown>
             </Menu>
